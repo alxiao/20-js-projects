@@ -1,0 +1,14 @@
+{
+  "name": "20-js-projects",
+  "version": "1.0.0",
+  "main": "main.html",
+  "repository": "git@github.com:alxiao/20-js-projects.git",
+  "author": "Annie Xiao <annie.x981@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}

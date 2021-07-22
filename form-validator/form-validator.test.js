@@ -13,9 +13,15 @@ const {
 } = require('./script');
 
 test('showError', () => {
+  const parentEl = document.createElement('div');
   const testEl = document.createElement('div');
-  testEl.parentElement = document.createElement('div');
-  showError(testEl, "test message");
+  const smallEl = document.createElement('small');
+  testEl.appendChild(smallEl);
+  parentEl.appendChild(testEl);
 
-  expect(testEl.classList.contains('error')).toBeTruthy();
+  const message = "test message";
+  showError(testEl, message);
+
+  expect(parentEl.classList.contains('error')).toBeTruthy();
+  expect(smallEl.innerText).toBe(message);
 });

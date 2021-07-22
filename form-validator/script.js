@@ -74,3 +74,13 @@ form.addEventListener('submit', function(e) {
   checkEmail(email);
   checkPasswordsMatch(password, confirmPassword);
 });
+
+module.exports = {
+  showError,
+  showSuccess,
+  checkEmail,
+  getFieldName,
+  checkRequired,
+  checkLength,
+  checkPasswordsMatch,
+};

@@ -6,7 +6,8 @@
   "author": "Annie Xiao <annie.x981@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --config jest.config.js",
+    "coverage": "jest --coverage"
   },
   "devDependencies": {
     "jest": "^27.0.6"

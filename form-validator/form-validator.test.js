@@ -13,15 +13,12 @@ const {
 } = require('./script');
 
 test('showError', () => {
-  const parentEl = document.createElement('div');
-  const testEl = document.createElement('div');
-  const smallEl = document.createElement('small');
-  testEl.appendChild(smallEl);
-  parentEl.appendChild(testEl);
-
+  const usernameInput = document.getElementById('username');
   const message = "test message";
-  showError(testEl, message);
 
-  expect(parentEl.classList.contains('error')).toBeTruthy();
-  expect(smallEl.innerText).toBe(message);
+  showError(usernameInput, message);
+
+  const formControl = usernameInput.parentElement;
+  expect(formControl.classList.contains('error')).toBeTruthy();
+  expect(formControl.querySelector('small').innerText).toBe(message);
 });

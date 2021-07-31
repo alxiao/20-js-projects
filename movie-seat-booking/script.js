@@ -1,86 +1,29 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const confirmPassword = document.getElementById('confirm-password');
+const container = document.querySelector('.movie-seat-container');
+const seats = document.querySelectorAll('.seat-row .movie-seat:not(.occupied');
+const count = document.getElementById('seats-count');
+const total = document.getElementById('total-price');
+const movieSelect = document.getElementById('movie-select');
 
-function showError(input, message) {
-  const formControl = input.parentElement;
-  formControl.classList.remove('success');
-  formControl.classList.add('error');
+let ticketPrice = +movieSelect.value;
 
-  const small = formControl.querySelector('small');
-  small.innerText = message;
-}
+container.addEventListener('click', (e) => {
+  if (e.target.classList.contains('movie-seat') && !e.target.classList.contains('occupied')) {
+    e.target.classList.toggle('selected');
 
-function showSuccess(input) {
-  const formControl = input.parentElement;
-  formControl.classList.remove('error');
-  formControl.classList.add('success');
-}
-
-function checkEmail(email) {
-  // From https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (re.test(email.value.trim().toLowerCase())) {
-    showSuccess(email);
-  } else {
-    showError(email, 'Email is not valid');
+    updateSelectedCount();
   }
-  return re.test(String(email).toLowerCase());
-}
-
-function getFieldName(input) {
-  if (input.id === 'confirm-password') {
-    return 'Confirm password';
-  }
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-function checkRequired(inputArr) {
-  inputArr.forEach(function(input) {
-    if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} is required`);
-    } else {
-      showSuccess(input);
-    }
-  });
-}
-
-function checkLength(input, min, max) {
-  if (input.value.length < min) {
-    showError(input, `${getFieldName(input)} must be at least ${min} characters`);
-  } else if (input.value.length > max) {
-    showError(input, `${getFieldName(input)} must be less than ${max} characters`);
-  } else {
-    showSuccess(input);
-  }
-}
-
-function checkPasswordsMatch(password, confirmPassword) {
-  if (password.value === confirmPassword.value) {
-    showSuccess(confirmPassword);
-  } else {
-    showError(confirmPassword, 'Passwords do not match');
-  }
-}
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  checkRequired([username, email, password, confirmPassword]);
-  checkLength(username, 3, 15);
-  checkLength(password, 6, 25);
-  checkEmail(email);
-  checkPasswordsMatch(password, confirmPassword);
 });
 
-module.exports = {
-  showError,
-  showSuccess,
-  checkEmail,
-  getFieldName,
-  checkRequired,
-  checkLength,
-  checkPasswordsMatch,
-};
+movieSelect.addEventListener('change', (e) => {
+  ticketPrice = +e.target.value;
+  updateSelectedCount();
+})
+
+// Update total and count
+function updateSelectedCount() {
+  const selectedSeats = document.querySelectorAll('.seat-row .movie-seat.selected');
+  const selectedSeatsCount = selectedSeats.length;
+
+  count.innerText = selectedSeatsCount;
+  total.innerText = selectedSeatsCount * ticketPrice;
+}

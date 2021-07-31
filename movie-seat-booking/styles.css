@@ -20,19 +20,15 @@ body {
   margin: 0;
 }
 
-p {
-  color: #fff;
-}
-
-.pick-movie-text {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 14px;
-}
-
 #movie-select {
   padding: 4px 10px;
   border-radius: 3px;
+}
+
+label {
+  color: #fff;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 select::-ms-expand {
@@ -48,7 +44,7 @@ select:focus {
   outline: none;
 }
 
-.legend-container {
+.legend {
   display: flex;
   justify-content: space-evenly;
   background-color: rgb(17, 17, 17);
@@ -57,7 +53,11 @@ select:focus {
   margin: 20px 0;
 }
 
-.legend-container .legend-text {
+.legend li {
+  list-style: none;
+}
+
+.legend .legend-text {
   color: rgb(104, 104, 104);
 }
 

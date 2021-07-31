@@ -10,29 +10,29 @@
   <body>
     <div class="container">
       <div class="movie-container">
-        <p class="pick-movie-text">Pick a movie:</p>
+        <label for="movie">Pick a movie:</label>
         <select name="movie" id="movie-select">
-          <option value="avengers-endgame">Avengers Endgame ($10)</option>
-          <option value="joker">Joker ($12)</option>
-          <option value="toy-story-4">Toy Story 4 ($8)</option>
-          <option value="the-lion-king">The Lion King ($9)</option>
+          <option value="10">Avengers Endgame ($10)</option>
+          <option value="12">Joker ($12)</option>
+          <option value="8">Toy Story 4 ($8)</option>
+          <option value="9">The Lion King ($9)</option>
         </select>
       </div>
 
-      <div class="legend-container">
-        <div class="legend-item">
-          <span class="movie-seat"></span>
+      <ul class="legend">
+        <li class="legend-item">
+          <div class="movie-seat"></div>
           <small class="legend-text">Available</small>
-        </div>
-        <div class="legend-item">
-          <span class="movie-seat selected"></span>
+        </li>
+        <li class="legend-item">
+          <div class="movie-seat selected"></div>
           <small class="legend-text">Selected</small>
-        </div>
-        <div class="legend-item">
-          <span class="movie-seat occupied"></span>
+        </li>
+        <li class="legend-item">
+          <div class="movie-seat occupied"></div>
           <small class="legend-text">Occupied</small>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
 
     <div class="movie-screen"></div>
@@ -40,64 +40,64 @@
     <div class="movie-seat-container">
       <div class="seat-row">
         <div class="left-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="center-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="right-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
       </div>
       <div class="seat-row">
         <div class="left-seats">
-          <span class="movie-seat occupied"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat occupied"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="center-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="right-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat selected"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat selected"></div>
         </div>
       </div>
       <div class="seat-row">
         <div class="left-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="center-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
 
         <div class="right-seats">
-          <span class="movie-seat"></span>
-          <span class="movie-seat"></span>
+          <div class="movie-seat"></div>
+          <div class="movie-seat"></div>
         </div>
       </div>
     </div>
 
-    <small class="selected-info">
-      You have selected <span class="number-seats">0</span> seats for a total
+    <p class="selected-info">
+      You have selected <span class="seats-count">0</span> seats for a total
       price of $<span class="total-price">0</span>
-    </small>
+    </p>
     <script src="script.js"></script>
   </body>
 </html>

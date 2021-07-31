@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Movie Seat Booking</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="movie-container">
+        <p class="pick-movie-text">Pick a movie:</p>
+        <select name="movie" id="movie-select">
+          <option value="avengers-endgame">Avengers Endgame ($10)</option>
+          <option value="joker">Joker ($12)</option>
+          <option value="toy-story-4">Toy Story 4 ($8)</option>
+          <option value="the-lion-king">The Lion King ($9)</option>
+        </select>
+      </div>
+
+      <div class="legend-container">
+        <div class="legend-item">
+          <span class="movie-seat"></span>
+          <small class="legend-text">Available</small>
+        </div>
+        <div class="legend-item">
+          <span class="movie-seat selected"></span>
+          <small class="legend-text">Selected</small>
+        </div>
+        <div class="legend-item">
+          <span class="movie-seat occupied"></span>
+          <small class="legend-text">Occupied</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="movie-screen"></div>
+
+    <div class="movie-seat-container">
+      <div class="seat-row">
+        <div class="left-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="center-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="right-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+      </div>
+      <div class="seat-row">
+        <div class="left-seats">
+          <span class="movie-seat occupied"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="center-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="right-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat selected"></span>
+        </div>
+      </div>
+      <div class="seat-row">
+        <div class="left-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="center-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+
+        <div class="right-seats">
+          <span class="movie-seat"></span>
+          <span class="movie-seat"></span>
+        </div>
+      </div>
+    </div>
+
+    <small class="selected-info">
+      You have selected <span class="number-seats">0</span> seats for a total
+      price of $<span class="total-price">0</span>
+    </small>
+    <script src="script.js"></script>
+  </body>
+</html>

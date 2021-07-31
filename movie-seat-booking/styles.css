@@ -65,6 +65,7 @@ select:focus {
 
 .movie-seat-container {
   cursor: default;
+  perspective: 1000px;
 }
 
 .movie-seat-container .seat-row {
@@ -101,11 +102,17 @@ select:focus {
 
 .movie-screen {
   width: 180px;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+  transform: rotateX(-45deg);
+  /* This is a different way to skew the movie screen:
+    create trapezoid and use drop shadow filter
   border-top: 50px solid #fff;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-radius: 2px;
-  filter: drop-shadow(0 0 4px lightgrey);
+  filter: drop-shadow(0 0 4px lightgrey); */
   margin: 15px 0;
 }
 

@@ -42,19 +42,25 @@ select:focus {
 
 .legend {
   display: flex;
-  justify-content: space-evenly;
-  background-color: rgb(17, 17, 17);
-  border-radius: 3px;
-  padding: 5px 5px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px 10px;
   margin: 20px 0;
+  color: #777;
+  list-style-type: none;
 }
 
 .legend li {
-  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
 }
 
 .legend .legend-text {
   color: rgb(104, 104, 104);
+  margin-left: 2px;
 }
 
 .movie-seat-container {
@@ -63,8 +69,6 @@ select:focus {
 
 .movie-seat-container .seat-row {
   display: flex;
-  /* width: 170px;
-  justify-content: space-between; */
   justify-content: center;
 }
 
@@ -102,15 +106,16 @@ select:focus {
   border-right: 5px solid transparent;
   border-radius: 2px;
   filter: drop-shadow(0 0 4px lightgrey);
-  margin: 10px 0 15px;
+  margin: 15px 0;
 }
 
-.movie-seat-container .movie-seat {
+.movie-seat-container .movie-seat:not(.occupied):hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .movie-seat-container .occupied {
-  cursor: auto;
+  cursor: default;
 }
 
 .selected-info {

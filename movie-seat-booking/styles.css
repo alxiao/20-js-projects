@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #252525;
+  background-color: #242333;
   font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: column;
@@ -18,24 +18,20 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-}
-
-#movie-select {
-  padding: 4px 10px;
-  border-radius: 3px;
+  color: #fff;
 }
 
 label {
-  color: #fff;
   font-size: 14px;
   margin-right: 10px;
 }
 
-select::-ms-expand {
-  display: none;
-}
-
-select {
+#movie-select {
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 0;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -67,18 +63,20 @@ select:focus {
 
 .movie-seat-container .seat-row {
   display: flex;
-  width: 170px;
-  justify-content: space-between;
+  /* width: 170px;
+  justify-content: space-between; */
+  justify-content: center;
 }
 
 .movie-seat {
   display: inline-block;
-  width: 14px;
+  width: 15px;
   height: 12px;
-  background-color: rgb(104, 104, 104);
+  background-color: #444451;
   border: 16px;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 3px;
 }
 
 .movie-seat.selected {
@@ -87,6 +85,14 @@ select:focus {
 
 .movie-seat.occupied {
   background-color: #fff;
+}
+
+.movie-seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.movie-seat:nth-last-of-type(2) {
+  margin-left: 18px;
 }
 
 .movie-screen {
@@ -108,7 +114,6 @@ select:focus {
 }
 
 .selected-info {
-  color: #fff;
   font-size: 12px;
   margin-top: 20px;
 }

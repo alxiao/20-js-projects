@@ -65,3 +65,8 @@ function populateUI() {
 
   updateSelectedCount();
 }
+
+module.exports = {
+  storeMovieData,
+  updateSelectedCount,
+}

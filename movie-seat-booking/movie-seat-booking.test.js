@@ -18,5 +18,13 @@ test('storeMovieData', () => {
 });
 
 test('updateSelectedCount', () => {
-  
+  const localStorageSpy = jest.spyOn(window.localStorage.__proto__, 'setItem');
+
+  updateSelectedCount();
+
+  const seatsCount = +document.getElementById('seats-count').innerText;
+  const moviePrice = +global.localStorage.getItem('selectedMoviePrice');
+  const totalEl = document.getElementById('total-price');
+  expect(localStorageSpy).toHaveBeenCalled();
+  expect(totalEl.innerText).toBe(seatsCount * moviePrice);
 });

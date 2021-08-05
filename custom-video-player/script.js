@@ -1,86 +1,66 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const confirmPassword = document.getElementById('confirm-password');
+const video = document.getElementById('video');
+const play = document.getElementById('play');
+const stop = document.getElementById('stop');
+const progress = document.getElementById('progress');
+const timestamp = document.getElementById('timestamp');
 
-function showError(input, message) {
-  const formControl = input.parentElement;
-  formControl.classList.remove('success');
-  formControl.classList.add('error');
+// Event listeners
+video.addEventListener('click', toggleVideoStatus);
+video.addEventListener('pause', updatePlayIcon);
+video.addEventListener('play', updatePlayIcon);
+video.addEventListener('timeupdate', updateProgress);
 
-  const small = formControl.querySelector('small');
-  small.innerText = message;
-}
+play.addEventListener('click', toggleVideoStatus);
 
-function showSuccess(input) {
-  const formControl = input.parentElement;
-  formControl.classList.remove('error');
-  formControl.classList.add('success');
-}
+stop.addEventListener('click', stopVideo);
 
-function checkEmail(email) {
-  // From https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (re.test(email.value.trim().toLowerCase())) {
-    showSuccess(email);
+progress.addEventListener('change', setVideoProgress);
+
+function toggleVideoStatus() {
+  if (video.paused) {
+    video.play();
   } else {
-    showError(email, 'Email is not valid');
+    video.pause();
   }
-  return re.test(String(email).toLowerCase());
+  updatePlayIcon();
 }
 
-function getFieldName(input) {
-  if (input.id === 'confirm-password') {
-    return 'Confirm password';
-  }
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-function checkRequired(inputArr) {
-  inputArr.forEach(function(input) {
-    if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} is required`);
-    } else {
-      showSuccess(input);
-    }
-  });
-}
-
-function checkLength(input, min, max) {
-  if (input.value.length < min) {
-    showError(input, `${getFieldName(input)} must be at least ${min} characters`);
-  } else if (input.value.length > max) {
-    showError(input, `${getFieldName(input)} must be less than ${max} characters`);
+function updatePlayIcon() {
+  const playIcon = play.querySelector('i');
+  if (video.paused) {
+    playIcon.classList.remove('fa-pause');
+    playIcon.classList.add('fa-play');
   } else {
-    showSuccess(input);
+    playIcon.classList.remove('fa-play');
+    playIcon.classList.add('fa-pause');
   }
 }
 
-function checkPasswordsMatch(password, confirmPassword) {
-  if (password.value === confirmPassword.value) {
-    showSuccess(confirmPassword);
-  } else {
-    showError(confirmPassword, 'Passwords do not match');
+function updateProgress() {
+  progress.value = (video.currentTime / video.duration) * 100;
+  
+  // Get minutes
+  let mins = Math.floor(video.currentTime / 60);
+  if (mins < 10) {
+    mins = '0' + String(mins);
   }
+
+  let seconds = Math.floor(video.currentTime % 60);
+  if (seconds < 10) {
+    seconds = '0' + String(seconds);
+  }
+
+  timestamp.innerText = `${mins}:${seconds}`;
 }
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
+function setVideoProgress() {
+  video.currentTime = (+progress.value * video.duration) / 100;
+  console.log(video.currentTime);
 
-  checkRequired([username, email, password, confirmPassword]);
-  checkLength(username, 3, 15);
-  checkLength(password, 6, 25);
-  checkEmail(email);
-  checkPasswordsMatch(password, confirmPassword);
-});
+  updateProgress();
+}
 
-module.exports = {
-  showError,
-  showSuccess,
-  checkEmail,
-  getFieldName,
-  checkRequired,
-  checkLength,
-  checkPasswordsMatch,
-};
+function stopVideo() {
+  video.currentTime = 0;
+  video.pause();
+}

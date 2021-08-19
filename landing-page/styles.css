@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
+:root {
+  --modal-duration: 1s;
+  --primary-color: #30336b;
+  --secondary-color: #be2edd;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(67, 57, 122);
+  background-color: var(--primary-color);
   color: #fff;
   width: 100%;
   padding: 30px;
@@ -33,7 +39,7 @@ button {
 }
 
 #sign-up {
-  background-color: rgb(214, 78, 226);
+  background-color: var(--secondary-color);
   color: #fff;
   border: none;
   padding: 10px 25px;
@@ -58,28 +64,26 @@ button {
 }
 
 .menu-container {
-  visibility: hidden;
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgb(67, 57, 122);
-  height: 100%;
-  width: 150px;
-  border-right: 1px solid lightslategrey;
+  background-color: var(--primary-color);
+  height: 100vh;
+  width: 200px;
+  border-right: 2px solid rgba(200, 200, 200, 0.1);
+  z-index: 100;
+  transform: translateX(-100%);
 }
 
 .menu-container.show {
   visibility: visible;
 }
 
-.menu-container .avatar {
-  border-bottom: 1px solid lightslategray;
-}
-
 .menu-container .avatar img {
   display: block;
   border-radius: 50%;
-  height: 64px;
+  height: 75px;
+  width: 75px;
   margin: 30px auto;
 }
 
@@ -89,20 +93,24 @@ button {
   margin: 0;
 }
 
-.menu-container li {
-  border-bottom: 1px solid lightslategray;
+.menu-container ul li {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.1);
   width: 100%;
   padding: 10px 15px;
 }
 
-.menu-container li a {
+.menu-container ul li:first-of-type {
+  border-top: 2px solid rgba(200, 200, 200, 0.1);
+}
+
+.menu-container ul li a {
   color: #fff;
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
 }
 
-.menu-container li a:hover {
+.menu-container ul li a:hover {
   text-decoration: underline;
 }
 

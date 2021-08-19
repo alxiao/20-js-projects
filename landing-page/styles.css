@@ -49,7 +49,8 @@ button {
   background-color: #111;
   color: #fff;
   border: none;
-  padding: 4px 8px;
+  padding: 10px 15px;
+  border-radius: 4px;
 }
 
 #menu-btn.show {
@@ -99,6 +100,10 @@ button {
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
+}
+
+.menu-container li a:hover {
+  text-decoration: underline;
 }
 
 .content-container {
